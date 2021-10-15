@@ -1,4 +1,19 @@
-Instructions
+Description:
+This is just a project I put together to do some .net core 3.1 learning. 
+1. It uses a .NET EF Core in-memory database for storage. 
+2. It has swagger integration, xunit unit tests for the web api endpoints and mstest integration tests for testing the backend. (TODO: standardize on xunit)
+3. It has a side-loaded services that consumes messages and stores them in the data store. (TODO: send these messages to the api endpoint instead of directly accessing the data class) 
+4. It has a .net core web api that is used to access the data in the datastore.
+ a. Exams (end points)
+  + Exams (gets all exams)
+  + Exams?number=x (gets one exam by exam number)
+ b. Students (end points)
+  + Students (gets all students)
+  + Students?id=x (gets one student by string Id)
+ c. Messages (end points)
+  + PutEventMessage (inserts an event message... this one still needs work.)
+ 
+Run Instructions
 Download .net core 3.1
 https://dotnet.microsoft.com/download/dotnet/3.1
 
