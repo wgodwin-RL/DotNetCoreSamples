@@ -5,20 +5,23 @@ This is just a project I put together to do some .net core 3.1 learning.
 3. It has a side-loaded services that consumes messages and stores them in the data store. (TODO: send these messages to the api endpoint instead of directly accessing the data class) 
 4. It has a .net core web api that is used to access the data in the datastore.
 
- a. Exams (end points)
-  ++ Exams (gets all exams)
-  ++ Exams?number=x (gets one exam by exam number)
- b. Students (end points)
-  ++ Students (gets all students)
-  ++ Students?id=x (gets one student by string Id)
- c. Messages (end points)
-  ++ PutEventMessage (inserts an event message... this one still needs work.)
+Endpoints
+  - Exams (gets all exams)
+  
+  - Exams?number=x (gets one exam by exam number)
  
-Run Instructions
+  - Students (gets all students)
+  
+  - Students?id=x (gets one student by string Id)
+  
+  - Messages (inserts an event message... this one still needs work.)
+ 
+Run Instructions (other than using visual studio)
+
 Download .net core 3.1
 https://dotnet.microsoft.com/download/dotnet/3.1
 
-Running the project locally
+
 Using the dotnet tools that were just installed to run the project locally.
 1. Open a cmd prompt
 2. copy/paste the following "dotnet run --project 'path to LDAPI.csproj'"
