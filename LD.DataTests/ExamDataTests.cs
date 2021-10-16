@@ -1,4 +1,4 @@
-﻿using LD_BootstrapSetup;
+﻿using LD.BootstrapSetup;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
@@ -6,9 +6,9 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using LD_Models;
-using LD_Models.Messages;
-using LD_Models.Interfaces;
+using LD.Models;
+using LD.Models.Messages;
+using LD.Models.Interfaces;
 
 namespace LD.Data.Tests
 {

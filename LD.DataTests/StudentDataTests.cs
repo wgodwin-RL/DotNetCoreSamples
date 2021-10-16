@@ -7,12 +7,12 @@ using Microsoft.Extensions.DependencyInjection;
 
 using System.Threading.Tasks;
 using System.Linq;
-using LD_BootstrapSetup;
+using LD.BootstrapSetup;
 using System.Diagnostics;
 using Newtonsoft.Json;
-using LD_Models;
-using LD_Models.Messages;
-using LD_Models.Interfaces;
+using LD.Models;
+using LD.Models.Messages;
+using LD.Models.Interfaces;
 
 namespace LD.Data.Tests
 {

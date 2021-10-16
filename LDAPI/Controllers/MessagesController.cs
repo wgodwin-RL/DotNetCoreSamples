@@ -1,5 +1,6 @@
-﻿using LD_Models.Interfaces;
-using LD_Models.Messages;
+﻿using LD.Models.Constants;
+using LD.Models.Interfaces;
+using LD.Models.Messages;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -25,7 +26,7 @@ namespace LD_API.Controllers
             try
             {
 
-                if (message.Event.ToLower() != Constants.Score.ToLower())
+                if (message.Event.ToLower() != MessageConstants.Score.ToLower())
                     return BadRequest("invalid event type submitted.");
 
                 await _eventMessageData.UpsertEventMessage(message);

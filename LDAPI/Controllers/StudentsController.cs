@@ -1,5 +1,5 @@
-﻿using LD_Models.Interfaces;
-using LD_Models.Messages;
+﻿using LD.Models.Interfaces;
+using LD.Models.Messages;
 using LDAPI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

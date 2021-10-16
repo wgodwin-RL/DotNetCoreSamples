@@ -1,4 +1,4 @@
-﻿using LD_Models.Interfaces;
+﻿using LD.Models.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -6,7 +6,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace LD_Services
+namespace LD.Services
 {
     public class ConsumerAppServiceHost : BackgroundService
     {

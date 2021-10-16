@@ -1,12 +1,8 @@
-﻿using LD_Data;
-using LD_Models;
-using LD_Models.Interfaces;
-using LD_Models.Messages;
-
+﻿using LD.Models.Constants;
+using LD.Models.Interfaces;
+using LD.Models.Messages;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LD.Data
@@ -21,7 +17,7 @@ namespace LD.Data
 
         public async Task UpsertEventMessage(StudentExamEventMessage data)
         {
-            if (data.Event.ToLower() != LD_Models.Messages.Constants.Score)
+            if (data.Event.ToLower() != MessageConstants.Score)
                 throw new Exception($"invalid event type '{data.Event}'");
 
             var msgBody = data.Data;

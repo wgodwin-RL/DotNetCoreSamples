@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LDAPI.Models;
 using System;
-using LD_Models.Interfaces;
+using LD.Models.Interfaces;
 using Microsoft.Extensions.Logging;
 
 namespace LDAPI.Controllers

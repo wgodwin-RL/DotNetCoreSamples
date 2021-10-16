@@ -1,9 +1,6 @@
-﻿using LD_Models.Enums;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using LD.Models.Enums;
 
-namespace LD_Common
+namespace LD.Common
 {
     public static class EnvironmentHelper
     {
@@ -23,23 +20,6 @@ namespace LD_Common
                 case "development":
                     return Environments.Development;
 
-                case "pm":
-                case "prodmirror":
-                case "prod mirror":
-                    return Environments.ProdMirror;
-
-                case "prod":
-                case "production":
-                    return Environments.Production;
-
-                case "staging":
-                    return Environments.Staging;
-
-                case "qa":
-                case "qualityassurance":
-                    return Environments.QualityAssurance;
-
-
                 default:
                     return Environments.Unknown;
             }
@@ -51,28 +31,11 @@ namespace LD_Common
         {
             switch (environment)
             {
-
-                //
-                //AWS
-                //
                 case Environments.Local:
                     return "local";
 
                 case Environments.Development:
                     return "dev";
-
-                case Environments.ProdMirror:
-                    return "pm";
-
-                case Environments.Production:
-                    return "prod";
-
-                case Environments.Staging:
-                    return "staging";
-
-                case Environments.QualityAssurance:
-                    return "qa";
-
 
                 case Environments.Unknown:
                 default:

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
+﻿using System.ComponentModel;
 
-namespace LD_Models.Enums
+namespace LD.Models.Enums
 {
 
 
@@ -16,18 +13,6 @@ namespace LD_Models.Enums
         Local,
 
         [Description("Development")]
-        Development,
-
-        [Description("Prod Mirror")]
-        ProdMirror,
-
-        [Description("Production")]
-        Production,
-
-        [Description("Staging")]
-        Staging,
-
-        [Description("Quality Assurance")]
-        QualityAssurance,
+        Development
     }
 }

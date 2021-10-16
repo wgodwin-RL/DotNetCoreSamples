@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace LD_Models.Interfaces
+namespace LD.Models.Interfaces
 {
     public interface IConsumerAppService
     {

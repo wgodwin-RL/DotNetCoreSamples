@@ -1,8 +1,7 @@
-﻿using LD_Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace LD_Models.Interfaces
+namespace LD.Models.Interfaces
 {
     public interface IStudentData
     {

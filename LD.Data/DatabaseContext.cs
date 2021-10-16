@@ -1,9 +1,9 @@
-﻿using LD_Models.Messages;
+﻿using LD.Models.Constants;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 
-namespace LD_Data
+namespace LD.Data
 {
     public class DatabaseContext : DbContext
     {
@@ -13,9 +13,9 @@ namespace LD_Data
             _logger = logger;
         }
 
-        //public DbSet<LD_Models.Exam> Exams { get; set; }
-        //public DbSet<LD_Models.Student> Students { get; set; }
-        public DbSet<LD_Models.StudentExamData> StudentExamData { get; set; }
+        //public DbSet<LD.Models.Exam> Exams { get; set; }
+        //public DbSet<LD.Models.Student> Students { get; set; }
+        public DbSet<LD.Models.StudentExamData> StudentExamData { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             
@@ -26,8 +26,8 @@ namespace LD_Data
             try
             {
                 base.OnModelCreating(builder);
-                builder.Entity<LD_Models.StudentExamData>()
-                    .ToTable(Constants.StudentExamDataTableName)
+                builder.Entity<LD.Models.StudentExamData>()
+                    .ToTable(TableNameConstants.StudentExamDataTableName)
                     .HasKey(x => new { x.Exam, x.StudentId });
             }
             catch (Exception e) 

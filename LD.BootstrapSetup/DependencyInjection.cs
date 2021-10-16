@@ -1,20 +1,19 @@
 ﻿using LD.Data;
-using LD_Common;
-using LD_Models.Configuration;
-using LD_Models.Interfaces;
+using LD.Models.Configuration;
+using LD.Models.Constants;
+using LD.Models.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
 
-namespace LD_BootstrapSetup
+namespace LD.BootstrapSetup
 {
     public class DependencyInjection
     {
+        
+
         public static IConfiguration GetConfiguration(string appSettingsPrefix = "")
         {
             var environmentName = "local";
@@ -24,7 +23,6 @@ namespace LD_BootstrapSetup
 
             // build config
             var configuration = new ConfigurationBuilder()
-                //.SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile($"{appSettingsPrefix}appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"{appSettingsPrefix}appsettings.{environmentName}.json", optional: false, reloadOnChange: true)
                 .AddEnvironmentVariables()
@@ -45,7 +43,7 @@ namespace LD_BootstrapSetup
                 serviceCollection = new ServiceCollection();
 
             var config = GetConfiguration(appSettingsPrefix);
-            ConfigureSettings<AppSettings>("app", config, serviceCollection);
+            ConfigureSettings<AppSettings>(ConfigSectionConstants.AppConfigSectionName, config, serviceCollection);
 
             serviceCollection.AddLogging(builder =>
             {
@@ -54,7 +52,7 @@ namespace LD_BootstrapSetup
             });
 
             serviceCollection.AddEntityFrameworkSqlite()
-                .AddDbContext<LD_Data.DatabaseContext>(x => x.UseInMemoryDatabase("LDDB"));
+                .AddDbContext<LD.Data.DatabaseContext>(x => x.UseInMemoryDatabase("LDDB"));
                 //.AddScoped<AppSettings>();
 
             serviceCollection.AddScoped<IStudentData, StudentData>();

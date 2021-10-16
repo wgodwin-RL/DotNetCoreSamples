@@ -1,5 +1,5 @@
-using LD_Models.Interfaces;
-using LD_Services;
+using LD.Models.Interfaces;
+using LD.Services;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

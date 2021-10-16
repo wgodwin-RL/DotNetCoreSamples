@@ -1,8 +1,7 @@
-﻿using LD_Models;
-using LD_Models.Messages;
+﻿using LD.Models.Messages;
 using System.Threading.Tasks;
 
-namespace LD_Models.Interfaces
+namespace LD.Models.Interfaces
 {
     public interface IEventMessageData
     {

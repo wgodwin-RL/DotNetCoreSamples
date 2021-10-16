@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace LD_Models.Configuration
+﻿namespace LD.Models.Configuration
 {
     public class AppSettings
     {

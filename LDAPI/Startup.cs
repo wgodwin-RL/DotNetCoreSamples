@@ -1,5 +1,4 @@
-using LD_BootstrapSetup;
-using LD_Services;
+using LD.BootstrapSetup;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
