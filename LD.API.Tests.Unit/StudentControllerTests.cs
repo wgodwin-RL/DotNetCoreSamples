@@ -13,7 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace LD_APIIntegrationTests2
+namespace LD.API.Tests.Integration
 {
     public class StudentControllerTests
     {

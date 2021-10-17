@@ -30,10 +30,6 @@ namespace LD.Data.Tests
             Console.WriteLine("ClassInitialize");
 
             var services = new ServiceCollection();
-            //services.AddTransient<IStudentData, StudentData>();
-            //services.AddTransient<IExamData, ExamData>();
-            //services.AddTransient<IEventMessageData, EventMessageData>();
-
             DependencyInjection.InitServiceCollection(services);
             var serviceProvider = services.BuildServiceProvider();
 
@@ -56,7 +52,7 @@ namespace LD.Data.Tests
         public async Task GetStudentsTest()
         {
             var students = await _studentData.GetStudents();
-            JsonConvert.SerializeObject(students);
+            await WriteMessage(JsonConvert.SerializeObject(students));
             Assert.IsTrue(students.Any());
         }
 
@@ -65,7 +61,7 @@ namespace LD.Data.Tests
         {
             var studentId = "2";
             var student = await _studentData.GetStudent(studentId);
-            JsonConvert.SerializeObject(student);
+            await WriteMessage(JsonConvert.SerializeObject(student));
             Assert.IsTrue(student != null);
         }
 

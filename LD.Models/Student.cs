@@ -10,5 +10,10 @@ namespace LD.Models
         public Student() 
         { 
         }
+
+        public override string ToString()
+        {
+            return $"{this.StudentId}, {this.AverageScore}";
+        }
     }
 }

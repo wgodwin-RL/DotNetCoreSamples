@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LD.BootstrapSetup\LD.BootstrapSetup.csproj" />
-    <ProjectReference Include="..\LD_Services\LD.Services.csproj" />
+    <ProjectReference Include="..\LD.Services\LD.ConsoleApps.csproj" />
   </ItemGroup>
 
 

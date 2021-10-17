@@ -9,5 +9,11 @@ namespace LD.Models
         public IEnumerable<StudentExamData> StudentData { get; set; }
 
         public decimal AverageScore { get; set; }
+
+
+        public override string ToString()
+        {
+            return $"{this.Number}, {this.AverageScore}";
+        }
     }
 }

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
 using LD.BootstrapSetup;
-using LD.Services;
+using LD.ConsoleApps;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace LD.MessageConsumerTests
+namespace LD.MessageConsumer.Tests.Integration
 {
     class Program
     {

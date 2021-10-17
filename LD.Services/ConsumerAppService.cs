@@ -14,7 +14,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace LD.Services
+namespace LD.ConsoleApps
 {
     public class ConsumerAppService : IConsumerAppService
     {

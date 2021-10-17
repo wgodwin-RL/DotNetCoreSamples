@@ -6,7 +6,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace LD.Services
+namespace LD.ConsoleApps
 {
     public class ConsumerAppServiceHost : BackgroundService
     {
