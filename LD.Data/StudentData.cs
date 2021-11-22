@@ -22,7 +22,7 @@ namespace LD.Data
             return await ConvertEventDataMessagesToStudents(data);
         }
 
-        public async Task<Student> GetStudent(string studentId)
+        public async Task<Student> GetStudent(int studentId)
         {
             var data = _dBContext.StudentExamData
                 .Where(x => x.StudentId == studentId)
@@ -34,7 +34,7 @@ namespace LD.Data
 
         private async Task<List<Student>> ConvertEventDataMessagesToStudents(List<StudentExamData> eventMsgData) 
         {
-            List<Student> students = new List<Student>();
+            var students = new List<Student>();
             var studentIds = eventMsgData.Select(x => x.StudentId).Distinct();
             
             foreach (var studentId in studentIds)
@@ -49,14 +49,22 @@ namespace LD.Data
             return students;
         }
 
-        private async Task<Student> ConvertEventDataMessagesToStudent(string studentId, List<StudentExamData> studentExamData)
+        private async Task<Student> ConvertEventDataMessagesToStudent(int studentId, List<StudentExamData> studentExamData)
         {
-            return new Student()
+            try
             {
-                StudentId = studentId,
-                ExamData = studentExamData,
-                AverageScore = Math.Round(studentExamData.Average(x=> x.Score), 2)
-            };
+                return new Student()
+                {
+                    StudentId = studentId,
+                    Exams = studentExamData,
+                    AverageScore = Math.Round(studentExamData.Average(x => x.Score), 2)
+                };
+            }
+            catch(Exception e)
+            {
+                //log something
+                throw;
+            }
         }
     }
 }

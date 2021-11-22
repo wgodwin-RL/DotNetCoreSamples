@@ -16,8 +16,8 @@ namespace LD.API.Tests.Integration
 {
     public class StudentControllerTests
     {
-        private const string _studentIdLookup1 = "willtest1";
-        private const string _studentIdLookup2 = "willtest2";
+        private const int _studentIdLookup1 = 1;
+        private const int _studentIdLookup2 = 2;
         private const int _examLookup1 = 1;
         private const int _examLookup2 = 2;
 
@@ -70,19 +70,19 @@ namespace LD.API.Tests.Integration
                 new Student()
                 {
                     AverageScore = new List<decimal>(){ .80M, .90M }.Average()
-                    , ExamData = new List<StudentExamData>()
+                    , Exams = new List<StudentExamData>()
                     {
-                        new StudentExamData { Exam = _examLookup1, Score = .80M, StudentId = _studentIdLookup1 }
-                        , new StudentExamData { Exam = _examLookup2, Score = .90M, StudentId = _studentIdLookup1 }
+                        new StudentExamData { ExamId = _examLookup1, Score = .80M, StudentId = _studentIdLookup1 }
+                        , new StudentExamData { ExamId = _examLookup2, Score = .90M, StudentId = _studentIdLookup1 }
                     }
                     , StudentId = _studentIdLookup1 }
                 ,new Student()
                 {
                     AverageScore = new List<decimal>(){ .80M, .75M }.Average()
-                    , ExamData = new List<StudentExamData>()
+                    , Exams = new List<StudentExamData>()
                     {
-                        new StudentExamData { Exam = _examLookup1, Score = .75M, StudentId = _studentIdLookup2 }
-                        , new StudentExamData { Exam = _examLookup2, Score = .80M, StudentId = _studentIdLookup2 }
+                        new StudentExamData { ExamId = _examLookup1, Score = .75M, StudentId = _studentIdLookup2 }
+                        , new StudentExamData { ExamId = _examLookup2, Score = .80M, StudentId = _studentIdLookup2 }
                     }
                     , StudentId = _studentIdLookup2 }
             };
@@ -117,10 +117,10 @@ namespace LD.API.Tests.Integration
                 new Student()
                 {
                     AverageScore = new List<decimal>() { .80M, .90M }.Average()
-                    , ExamData = new List<StudentExamData>()
+                    , Exams = new List<StudentExamData>()
                     {
-                        new StudentExamData { Exam = _examLookup1, Score = .80M, StudentId = _studentIdLookup1 }
-                        , new StudentExamData { Exam = _examLookup2, Score = .90M, StudentId = _studentIdLookup1 }
+                        new StudentExamData { ExamId = _examLookup1, Score = .80M, StudentId = _studentIdLookup1 }
+                        , new StudentExamData { ExamId = _examLookup2, Score = .90M, StudentId = _studentIdLookup1 }
                     }
                     , StudentId = _studentIdLookup1
                 };

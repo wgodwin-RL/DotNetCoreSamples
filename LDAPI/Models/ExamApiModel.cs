@@ -26,7 +26,7 @@ namespace LDAPI.Models
 
     public class ExamStudentsResultsApiModel : IEquatable<ExamStudentsResultsApiModel>
     {
-        public string StudentId { get; set; }
+        public int StudentId { get; set; }
         public decimal Score { get; set; }
 
         public bool Equals([AllowNull] ExamStudentsResultsApiModel other)

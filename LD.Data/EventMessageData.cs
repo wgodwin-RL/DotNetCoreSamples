@@ -22,8 +22,8 @@ namespace LD.Data
 
             var msgBody = data.Data;
             msgBody.Score = Math.Round(msgBody.Score, 2);
-            
-            var exists = _dBContext.StudentExamData.FirstOrDefault(x=> x.StudentId.ToLower() == msgBody.StudentId.ToLower() && x.Exam == msgBody.Exam);
+
+            var exists = _dBContext.StudentExamData.FirstOrDefault(x=> x.StudentId == data.Data.StudentId && x.ExamId == msgBody.ExamId);
             if (exists == null)
                 _dBContext.StudentExamData.Add(msgBody);
             else

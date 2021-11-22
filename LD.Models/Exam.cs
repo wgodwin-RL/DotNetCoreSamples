@@ -4,16 +4,16 @@ namespace LD.Models
 {
     public class Exam
     {
-        public int Number { get; set; }
+        public int ExamId { get; set; }
 
-        public IEnumerable<StudentExamData> StudentData { get; set; }
+        public IEnumerable<StudentExamData> Students { get; set; }
 
         public decimal AverageScore { get; set; }
 
 
         public override string ToString()
         {
-            return $"{this.Number}, {this.AverageScore}";
+            return $"{this.ExamId}, {this.AverageScore}";
         }
     }
 }

@@ -46,8 +46,8 @@ namespace LDAPI.Controllers
                      ,
                     CumulativeAverageScore = result.AverageScore
                      ,
-                    ExamResults = result.ExamData
-                         .Select(x => new StudentExamResultsApiModel() { Exam = x.Exam, Score = x.Score })
+                    ExamResults = result.Exams
+                         .Select(x => new StudentExamResultsApiModel() { Exam = x.ExamId, Score = x.Score })
                          .ToArray()
                 }).ToArray();
 
@@ -66,13 +66,12 @@ namespace LDAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<StudentApiModel> Students(string id)
+        public async Task<StudentApiModel> Students(int id)
         {
             try
             {
-                var result = await _studentData.GetStudent(id);
-
-                if (result == null) 
+                var student = await _studentData.GetStudent(id);
+                if (student == null) 
                 {
                     throw new HttpResponseException(HttpStatusCode.NotFound);
                 }
@@ -81,10 +80,10 @@ namespace LDAPI.Controllers
                 {
                     StudentId = id
                     ,
-                    CumulativeAverageScore = result.AverageScore
+                    CumulativeAverageScore = student.AverageScore
                     ,
-                    ExamResults = result.ExamData
-                        .Select(x => new StudentExamResultsApiModel() { Exam = x.Exam, Score = x.Score })
+                    ExamResults = student.Exams
+                        .Select(x => new StudentExamResultsApiModel() { Exam = x.ExamId, Score = x.Score })
                         .ToArray()
                 };
 

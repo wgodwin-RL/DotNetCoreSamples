@@ -37,11 +37,11 @@ namespace LDAPI.Controllers
 
                 var response = results.Select(x => new ExamApiModel()
                 {
-                    Exam = x.Number
+                    Exam = x.ExamId
                     ,
                     CumulativeAverageScore = x.AverageScore
                     ,
-                    StudentExamResults = x.StudentData
+                    StudentExamResults = x.Students
                         .Select(x => new ExamStudentsResultsApiModel() { Score = x.Score, StudentId = x.StudentId })
                         .ToArray()
                 }).ToArray();
@@ -69,9 +69,9 @@ namespace LDAPI.Controllers
 
                 var response = new ExamApiModel()
                 {
-                    Exam = result.Number,
+                    Exam = result.ExamId,
                     CumulativeAverageScore = result.AverageScore,
-                    StudentExamResults = result.StudentData
+                    StudentExamResults = result.Students
                         .Select(x => new ExamStudentsResultsApiModel() { Score = x.Score, StudentId = x.StudentId })
                         .ToArray()
                 };

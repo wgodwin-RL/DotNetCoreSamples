@@ -33,7 +33,7 @@ namespace LD.Data.Tests.Integration
             _eventMsgData = _serviceProvider.GetService<IEventMessageData>();
             for (decimal x = 1; x < 10; x++)
             {
-                var msg = new StudentExamEventMessage { Event = "score", Data = new StudentExamData() { Exam = (int)x, Score = x, StudentId = x.ToString() } };
+                var msg = new StudentExamEventMessage { Event = "score", Data = new StudentExamData() { ExamId = (int)x, Score = x, StudentId = (int)x } };
                 _eventMsgData.UpsertEventMessage(msg).GetAwaiter().GetResult();
             }
         }

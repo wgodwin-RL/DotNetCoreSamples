@@ -6,7 +6,7 @@ namespace LDAPI.Models
 {
     public class StudentApiModel //: IEquatable<StudentApiModel>
     {
-        public string StudentId { get; set; }
+        public int StudentId { get; set; }
         public decimal CumulativeAverageScore { get; set; }
 
         public StudentExamResultsApiModel[] ExamResults{ get; set; }

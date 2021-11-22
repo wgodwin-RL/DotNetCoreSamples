@@ -6,6 +6,6 @@ namespace LD.Models.Interfaces
     public interface IStudentData
     {
         Task<List<Student>> GetStudents();
-        Task<Student> GetStudent(string studentId);
+        Task<Student> GetStudent(int studentId);
     }
 }

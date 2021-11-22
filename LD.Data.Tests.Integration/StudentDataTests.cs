@@ -32,7 +32,7 @@ namespace LD.Data.Tests.Integration
             _eventMsgData = _serviceProvider.GetService<IEventMessageData>();
             for (decimal x = 1; x < 10; x++)
             {
-                var msg = new StudentExamEventMessage { Event = "score", Data = new StudentExamData() { Exam = (int)x, Score = x, StudentId = x.ToString() } };
+                var msg = new StudentExamEventMessage { Event = "score", Data = new StudentExamData() { ExamId = (int)x, Score = x, StudentId = (int)x } };
                 _eventMsgData.UpsertEventMessage(msg).GetAwaiter().GetResult();
             }
         }
@@ -49,7 +49,7 @@ namespace LD.Data.Tests.Integration
         [Fact]
         public async Task GetStudentTest()
         {
-            var studentId = "2";
+            var studentId = 2;
             var student = await _studentData.GetStudent(studentId);
             await WriteMessage(JsonConvert.SerializeObject(student));
             Assert.True(student != null);

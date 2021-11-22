@@ -28,7 +28,14 @@ namespace LD.Data
                 base.OnModelCreating(builder);
                 builder.Entity<LD.Models.StudentExamData>()
                     .ToTable(TableNameConstants.StudentExamDataTableName)
-                    .HasKey(x => new { x.Exam, x.StudentId });
+                    .HasKey(x => new { x.ExamId, x.StudentId });
+
+                builder.Entity<LD.Models.Student>()
+                    .ToTable(TableNameConstants.StudentTableName)
+                    .HasKey(x=> x.StudentId);
+                builder.Entity<LD.Models.Exam>()
+                    .ToTable(TableNameConstants.ExamTableName)
+                    .HasKey(x=> x.ExamId);
             }
             catch (Exception e) 
             {

@@ -26,7 +26,7 @@ namespace LD.Data
         public async Task<Exam> GetExam(int id)
         {
             var data = _dBContext.StudentExamData
-                .Where(x => x.Exam == id)
+                .Where(x => x.ExamId == id)
                 .ToList();
             
             return await ConvertEventDataMessagesToExam(id, data);
@@ -35,12 +35,12 @@ namespace LD.Data
         private async Task<List<Exam>> ConvertEventDataMessagesToExams(List<StudentExamData> eventMsgData)
         {
             List<Exam> exams = new List<Exam>();
-            var examIds = eventMsgData.Select(x => x.Exam).Distinct();
+            var examIds = eventMsgData.Select(x => x.ExamId).Distinct();
 
             foreach (var examId in examIds)
             {
                 var examMsgs = eventMsgData
-                    .Where(x=> x.Exam == examId)
+                    .Where(x=> x.ExamId == examId)
                     .ToList();
 
                 var exam = await ConvertEventDataMessagesToExam(examId, examMsgs);
@@ -54,8 +54,8 @@ namespace LD.Data
         {
             return new Exam()
             {
-                Number = examId
-                , StudentData = examMsgs
+                ExamId = examId
+                , Students = examMsgs
                 , AverageScore = Math.Round(examMsgs.Average(x => x.Score), 2)
             };
         }

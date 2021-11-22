@@ -2,9 +2,9 @@
 {
     public class StudentExamData
     {
-        public int Exam { get; set; }
+        public int ExamId { get; set; }
 
-        public string StudentId { get; set; }
+        public int StudentId { get; set; }
 
         public decimal Score { get; set; }
     }
