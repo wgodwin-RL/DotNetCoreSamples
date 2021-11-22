@@ -52,7 +52,7 @@ namespace LD.BootstrapSetup
             });
 
             serviceCollection.AddEntityFrameworkSqlite()
-                .AddDbContext<LD.Data.DatabaseContext>(x => x.UseInMemoryDatabase("LDDB"));
+                .AddDbContext<LD.Data.StudentExamMessageDatabaseContext>(x => x.UseInMemoryDatabase("LDDB"));
                 //.AddScoped<AppSettings>();
 
             serviceCollection.AddScoped<IStudentData, StudentData>();

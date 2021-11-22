@@ -9,8 +9,8 @@ namespace LD.Data
 {
     public class ExamData : IExamData
     {
-        private readonly DatabaseContext _dBContext;
-        public ExamData(DatabaseContext dBContext)
+        private readonly StudentExamMessageDatabaseContext _dBContext;
+        public ExamData(StudentExamMessageDatabaseContext dBContext)
         {
             _dBContext = dBContext;
         }

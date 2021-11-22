@@ -5,6 +5,10 @@ using LDAPI.Models;
 using System;
 using LD.Models.Interfaces;
 using Microsoft.Extensions.Logging;
+using System.Net;
+using System.Web.Http;
+using HttpGetAttribute = Microsoft.AspNetCore.Mvc.HttpGetAttribute;
+using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
 
 namespace LDAPI.Controllers
 {
@@ -21,14 +25,14 @@ namespace LDAPI.Controllers
         }
 
         [HttpGet("")]
-        public async Task<ActionResult> Exams()
+        public async Task<ExamApiModel[]> Exams()
         {
             try
             {
                 var results = await _examData.GetExams();
                 if (!results.Any())
                 {
-                    return NotFound();
+                    throw new HttpResponseException(HttpStatusCode.NotFound);
                 }
 
                 var response = results.Select(x => new ExamApiModel()
@@ -42,16 +46,22 @@ namespace LDAPI.Controllers
                         .ToArray()
                 }).ToArray();
 
-                return Ok(response);
+                return response;
             }
-            catch (Exception e) 
+            catch (HttpResponseException hrex) 
             {
-                return BadRequest(e);
+                _logger.LogError(hrex.Message);
+                throw;
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
             }
         }
 
         [HttpGet("{number}")]
-        public async Task<ActionResult> Exams(int number)
+        public async Task<ExamApiModel> Exams(int number)
         {
             try
             {
@@ -66,11 +76,17 @@ namespace LDAPI.Controllers
                         .ToArray()
                 };
 
-                return Ok(response);
+                return response;
             }
-            catch (Exception e) 
+            catch (HttpResponseException hrex)
             {
-                return BadRequest(e);
+                _logger.LogError(hrex.Message);
+                throw;
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
             }
         }
     }

@@ -5,10 +5,10 @@ using System;
 
 namespace LD.Data
 {
-    public class DatabaseContext : DbContext
+    public class StudentExamMessageDatabaseContext : DbContext
     {
         private readonly ILogger _logger;
-        public DatabaseContext(DbContextOptions<DatabaseContext> options, ILogger<DatabaseContext> logger) : base(options)
+        public StudentExamMessageDatabaseContext(DbContextOptions<StudentExamMessageDatabaseContext> options, ILogger<StudentExamMessageDatabaseContext> logger) : base(options)
         {
             _logger = logger;
         }

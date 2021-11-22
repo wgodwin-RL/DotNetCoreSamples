@@ -1,9 +1,8 @@
+using LD.BootstrapSetup;
 using LD.Models;
 using LD.Models.Interfaces;
-using LD.BootstrapSetup;
 using LDAPI.Controllers;
 using LDAPI.Models;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -91,7 +90,7 @@ namespace LD.API.Tests.Integration
             mock.Setup(p => p.GetStudents()).ReturnsAsync(studentDataMock);
 
             StudentsController students = new StudentsController(mock.Object, _controllerLogger);
-            var apiResults = (StudentApiModel[])(((await students.Students()) as OkObjectResult).Value);
+            var apiResults = await students.Students();
 
             Assert.NotNull(apiResults);
             Assert.True(await StudentResultsAreEqual(resultingCheck, apiResults));
@@ -129,7 +128,7 @@ namespace LD.API.Tests.Integration
             mock.Setup(p => p.GetStudent(_studentIdLookup1)).ReturnsAsync(studentDataMock);
 
             StudentsController students = new StudentsController(mock.Object, _controllerLogger);
-            var apiResults = (StudentApiModel)(((await students.Students(_studentIdLookup1)) as OkObjectResult).Value);
+            var apiResults = await students.Students(_studentIdLookup1);
 
             Assert.NotNull(apiResults);
             var isEqual = apiResults.Equals(resultingCheck);

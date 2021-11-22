@@ -9,8 +9,8 @@ namespace LD.Data
 {
     public class EventMessageData : IEventMessageData
     {
-        private readonly DatabaseContext _dBContext;
-        public EventMessageData(DatabaseContext dBContext)
+        private readonly StudentExamMessageDatabaseContext _dBContext;
+        public EventMessageData(StudentExamMessageDatabaseContext dBContext)
         {
             _dBContext = dBContext;
         }

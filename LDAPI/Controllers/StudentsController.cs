@@ -7,7 +7,11 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
+using System.Web.Http;
+using HttpGetAttribute = Microsoft.AspNetCore.Mvc.HttpGetAttribute;
+using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
 
 namespace LDAPI.Controllers
 {
@@ -26,14 +30,14 @@ namespace LDAPI.Controllers
 
         
         [HttpGet("")]
-        public async Task<ActionResult> Students()
+        public async Task<StudentApiModel[]> Students()
         {
             try
             {
                 var results = await _studentData.GetStudents();
                 if (!results.Any())
                 {
-                    return NotFound();
+                    throw new HttpResponseException(HttpStatusCode.NotFound);
                 }
 
                 var response = results.Select(result => new StudentApiModel()
@@ -47,16 +51,22 @@ namespace LDAPI.Controllers
                          .ToArray()
                 }).ToArray();
 
-                return Ok(response);
+                return response;
             }
-            catch (Exception e) 
+            catch (HttpResponseException hrex)
             {
-                return BadRequest(e);
+                _logger.LogError(hrex.Message);
+                throw;
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
             }
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult> Students(string id)
+        public async Task<StudentApiModel> Students(string id)
         {
             try
             {
@@ -64,7 +74,7 @@ namespace LDAPI.Controllers
 
                 if (result == null) 
                 {
-                    return NotFound(id);
+                    throw new HttpResponseException(HttpStatusCode.NotFound);
                 }
 
                 var response = new StudentApiModel()
@@ -78,11 +88,17 @@ namespace LDAPI.Controllers
                         .ToArray()
                 };
 
-                return Ok(response);
+                return response;
             }
-            catch (Exception e) 
+            catch (HttpResponseException hrex)
             {
-                return BadRequest(e);
+                _logger.LogError(hrex.Message);
+                throw;
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
             }
         }
     }

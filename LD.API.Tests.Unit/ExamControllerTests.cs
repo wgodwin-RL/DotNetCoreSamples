@@ -1,9 +1,8 @@
-﻿using LD.Models;
+﻿using LD.BootstrapSetup;
+using LD.Models;
 using LD.Models.Interfaces;
-using LD.BootstrapSetup;
 using LDAPI.Controllers;
 using LDAPI.Models;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -100,7 +99,7 @@ namespace LD.API.Tests.Integration
 
 
             var exams = new ExamsController(mock.Object, _controllerLogger);
-            var apiResults = (ExamApiModel[])(((await exams.Exams()) as OkObjectResult).Value);
+            var apiResults = await exams.Exams();
 
             Assert.NotNull(apiResults);
             var isEqual = apiResults.Equals(resultingCheck);   
@@ -110,8 +109,6 @@ namespace LD.API.Tests.Integration
         [Fact]
         public async void GetExam1_Test()
         {
-
-
             var resultingCheck =
                 new ExamApiModel()
                 {
@@ -142,9 +139,8 @@ namespace LD.API.Tests.Integration
 
             mock.Setup(p => p.GetExam(_exam1Lookup)).ReturnsAsync(examDataMock);
 
-
             var exams = new ExamsController(mock.Object, _controllerLogger);
-            var apiResults = (ExamApiModel)(((await exams.Exams(_exam1Lookup)) as OkObjectResult).Value);
+            var apiResults = await exams.Exams(_exam1Lookup);
 
             Assert.NotNull(apiResults);
             var isEqual = apiResults.Equals(resultingCheck);
